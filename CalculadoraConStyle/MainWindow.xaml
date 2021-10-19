@@ -46,6 +46,7 @@
                     <TextBlock Style="{StaticResource CajaNumeros}" x:Name="NumerosTextBlock"></TextBlock>
                 </Viewbox>
             </Border>
+            <!-- 
             <Button Tag="1" Grid.Row="1" Grid.Column="0">
                 <Viewbox>
                     <TextBlock>1</TextBlock>
@@ -96,7 +97,7 @@
                     <TextBlock>0</TextBlock>
                 </Viewbox>
             </Button>
-
+        -->
         </Grid>
     </Grid>
 </Window>
