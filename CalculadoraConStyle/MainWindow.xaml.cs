@@ -23,45 +23,53 @@ namespace CalculadoraConStyle
         public MainWindow()
         {
             InitializeComponent();
-            int tag = 1;
-
-            for (int i = 1; i <= 3; i++)
+            for (int fila = 1; fila < 4; fila++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int columna = 0; columna < 3; columna++)
                 {
+                    int n = (fila - 1) * 3 + columna + 1;
+
                     Button boton = new Button();
-                    boton.Tag = tag;
-                    boton.Content = Tag;
-                    //Style = (Style)this.Resources["Button"];
-                    Grid.SetColumn(boton, i);
-                    Grid.SetRow(boton, j);
-                    tag++;
+                    Grid.SetRow(boton, fila);
+                    Grid.SetColumn(boton, columna);
+                    boton.Margin = new Thickness(5);
+                    boton.Click += Button_Click;
+                    boton.Tag = n;
+
+                    TextBlock texto = new TextBlock();
+                    texto.Text = n.ToString();
+                    Viewbox box = new Viewbox();
+                    box.Child = texto;
+                    boton.Content = box;
+
+                    MainGrid.Children.Add(boton);
                 }
             }
 
             Button boton0 = new Button();
-            boton0.Content = "0";
-            boton0.Tag = 0;
             Grid.SetRow(boton0, 4);
             Grid.SetColumnSpan(boton0, 3);
+            boton0.Margin = new Thickness(5);
+            boton0.Click += Button_Click;
+            boton0.Tag = 0;
 
+            TextBlock texto0 = new TextBlock();
+            texto0.Text = 0.ToString();
+            Viewbox box0 = new Viewbox();
+            box0.Child = texto0;
+            boton0.Content = box0;
+            boton0.Style = (Style)this.Resources["StyleBoton"];
 
-
+            MainGrid.Children.Add(boton0);
         }
-
-
-
-
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Button boton = (Button)sender;
-            String numerosAcumulados = NumerosTextBlock.Text;
-            NumerosTextBlock.Text = numerosAcumulados + boton.Tag.ToString();
+            NumerosTextBlock.Text += ((Button)sender).Tag.ToString();
         }
     }
 }
+
 
 
 
