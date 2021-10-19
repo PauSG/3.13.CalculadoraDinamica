@@ -41,6 +41,7 @@ namespace CalculadoraConStyle
                     Viewbox box = new Viewbox();
                     box.Child = texto;
                     boton.Content = box;
+                    boton.Style = (Style)this.Resources["StyleBoton"];
 
                     MainGrid.Children.Add(boton);
                 }
